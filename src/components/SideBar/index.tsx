@@ -1,37 +1,42 @@
-import { Box, Stack, Text, Link, Icon } from "@chakra-ui/react";
+import { DrawerBody, DrawerHeader } from "@chakra-ui/react";
 import {
-  RiContactsLine,
-  RiDashboardLine,
-  RiGitMergeLine,
-  RiInputMethodLine,
-} from "react-icons/ri";
+  Box,
+  Drawer,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { useSideBarDrawer } from "../../Contexts/SideBarDrawerContext";
+import { SideBarNav } from "./SideBarNav";
 
 export function Sidebar() {
+  const {isOpen, onClose} = useSideBarDrawer();
+
+  const isDrawerSideBar = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
+  if (isDrawerSideBar) {
+    return (
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+        <DrawerOverlay>
+          <DrawerContent bg="gray.800" p="4">
+            <DrawerCloseButton mt="6" />
+            <DrawerHeader>Navegação</DrawerHeader>
+            <DrawerBody>
+              <SideBarNav />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    );
+  }
+
   return (
     <Box as="aside" w="64" mr="8">
-      <Stack spacing="12" align="flex-start">
-
-
-        <Box>
-          <Text fontWeight="bold" color="gray.400" fontSize="small">
-            AUTOMAÇÃO
-          </Text>
-          <Stack spacing="4" mt="8" align="stretch">
-            <Link display="flex" alignItems="center">
-              <Icon as={RiInputMethodLine} fontSize="20" />
-              <Text ml="4" fontWeight="medium">
-                Formulários
-              </Text>
-            </Link>
-            <Link display="flex" alignItems="center">
-              <Icon as={RiGitMergeLine} fontSize="20" />
-              <Text ml="4" fontWeight="medium">
-                Automação
-              </Text>
-            </Link>
-          </Stack>
-        </Box>
-      </Stack>
+      <SideBarNav />
     </Box>
   );
 }
