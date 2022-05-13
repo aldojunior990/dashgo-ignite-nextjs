@@ -1,5 +1,5 @@
 <h1 align="center">
-  <strong>DashGo</strong>
+  <strong>Dashgo</strong>
 </h1>
 <br>
 
