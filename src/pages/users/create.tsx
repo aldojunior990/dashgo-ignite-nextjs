@@ -9,7 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { Input } from "../../components/form/Input";
+import { Input } from "../../components/form/input";
 import { Header } from "../../components/header";
 import { Sidebar } from "../../components/SideBar";
 import { SubmitHandler, useForm } from "react-hook-form";

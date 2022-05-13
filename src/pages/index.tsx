@@ -2,7 +2,7 @@ import { Flex, Button, Stack } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Input } from "../components/form/Input";
+import { Input } from "../components/form/input";
 
 type SignInFormData = {
   email: string;
@@ -10,7 +10,7 @@ type SignInFormData = {
 };
 
 const signInFormSchema = yup.object().shape({
-  email: yup.string().required("Email obrigatorio").email('Email invalido'),
+  email: yup.string().required("Email obrigatorio").email("Email invalido"),
   password: yup.string().required("Senha obrigatoria"),
 });
 
