@@ -23,10 +23,8 @@ import { Header } from "../../components/header";
 import { Pagination } from "../../components/pagination";
 import { Sidebar } from "../../components/SideBar";
 import { api } from "../../services/api";
-import { getUsers, useUsers } from "../../services/hooks/useUsers";
+import { useUsers } from "../../services/hooks/useUsers";
 import { queryClient } from "../../services/queryClient";
-
-import { GetServerSideProps } from "next";
 
 export default function UserList({ users }) {
   const [page, setPage] = useState(1);
@@ -144,13 +142,3 @@ export default function UserList({ users }) {
     </Box>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { users, totalCount } = await getUsers(1);
-
-  return {
-    props: {
-      users,
-    },
-  };
-};
